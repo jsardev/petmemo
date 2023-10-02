@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "format": "prettier --write './*.{ts,cjs,json}' 'src/**/*.{ts,tsx,css}'"
+    "format": "prettier --write './*.{ts,cjs,json}' 'src/**/*.{ts,tsx,css}'",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -28,5 +29,9 @@
     "typescript": "^5.0.2",
     "unocss": "^0.56.4",
     "vite": "^4.4.5"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --cache --fix",
+    "*.{ts,tsx,css}": "prettier --write"
   }
 }
