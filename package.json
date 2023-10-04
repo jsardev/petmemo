@@ -12,15 +12,19 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "clsx": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.16.0"
+    "react-router-dom": "^6.16.0",
+    "zustand": "^4.4.2"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.1.131",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "@unocss/preset-icons": "^0.56.5",
     "@unocss/reset": "^0.56.4",
     "@vitejs/plugin-react": "^4.0.3",
     "eslint": "^8.45.0",
