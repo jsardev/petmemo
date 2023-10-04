@@ -1,6 +1,6 @@
-import { CardsSettingsChooser } from '../modules/game-settings/ui/CardsSettingsChooser'
-import { PlayersSettingsChooser } from '../modules/game-settings/ui/PlayersSettingsChooser'
-import { Button } from '../shared/ui/Button'
+import { PlayersSettingsChooser } from '@/modules/game-settings/ui/PlayersSettingsChooser'
+import { Button } from '@/shared/ui/Button'
+import { CardsSettingsChooser } from '@/modules/game-settings/ui/CardsSettingsChooser'
 
 export function MainMenuPage() {
   return (

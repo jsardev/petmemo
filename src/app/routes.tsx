@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { MainMenuPage } from '../pages/MainMenuPage'
-import { BoardPage } from '../pages/BoardPage'
+
+import { MainMenuPage } from '@/pages/MainMenuPage'
+import { BoardPage } from '@/pages/BoardPage'
 
 const router = createBrowserRouter([
   { path: '/', element: <MainMenuPage /> },

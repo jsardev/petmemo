@@ -1,6 +1,7 @@
 import { useShallow } from 'zustand/shallow'
-import { useGameSettingsState } from '../model/state'
-import { Chooser } from '../../../shared/ui/Chooser'
+
+import { useGameSettingsState } from '@/modules/game-settings/model/state'
+import { Chooser } from '@/shared/ui/Chooser'
 
 const OPTIONS = [1, 2, 3, 4]
 
