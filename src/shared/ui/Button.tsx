@@ -30,7 +30,7 @@ export const Button = ({ navigateTo, children, onClick }: ButtonProps) => {
 
   return (
     <button
-      className="px-4 py-3 bg-primary rounded text-white text-lg hover:bg-primary-500 focus:outline-none focus:ring-3 focus:ring-primary-500"
+      className="rounded bg-primary px-4 py-3 text-lg text-white hover:bg-primary-500 focus:outline-none focus:ring-3 focus:ring-primary-500"
       onClick={handleClick}
     >
       {children}

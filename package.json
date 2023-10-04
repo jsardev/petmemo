@@ -25,6 +25,7 @@
     "@types/react-dom": "18.2.8",
     "@typescript-eslint/eslint-plugin": "6.7.4",
     "@typescript-eslint/parser": "6.7.4",
+    "@unocss/eslint-config": "^0.56.5",
     "@unocss/preset-icons": "0.56.5",
     "@unocss/reset": "0.56.5",
     "@vitejs/plugin-react": "4.1.0",
@@ -41,6 +42,6 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": "eslint --cache --fix",
-    "*.{ts,tsx,css}": "prettier --write"
+    "*.{ts,tsx,cjs,css}": "prettier --write"
   }
 }

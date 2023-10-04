@@ -4,7 +4,7 @@ import { CardsSettingsChooser } from '@/modules/game-settings/ui/CardsSettingsCh
 
 export function MainMenuPage() {
   return (
-    <main className="flex w-screen h-screen justify-center items-center flex-col gap-6">
+    <main className="h-screen w-screen flex flex-col items-center justify-center gap-6">
       <div className="flex gap-4">
         <PlayersSettingsChooser />
         <CardsSettingsChooser />

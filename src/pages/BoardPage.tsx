@@ -2,7 +2,7 @@ import { Button } from '@/shared/ui/Button'
 
 export function BoardPage() {
   return (
-    <main className="flex w-screen h-screen justify-center items-center flex-col gap-4">
+    <main className="h-screen w-screen flex flex-col items-center justify-center gap-4">
       Not implemented yet.
       <Button navigateTo="/">Back to menu</Button>
     </main>
