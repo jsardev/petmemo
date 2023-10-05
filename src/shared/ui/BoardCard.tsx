@@ -37,7 +37,7 @@ export const BoardCard = ({
       height={height}
       className={clsx(
         className,
-        'rounded-xl object-cover border-slate-2 border-3 transition-shadow transition-opacity select-none aspect-square w-full h-full',
+        'rounded-xl object-cover border-slate-2 border-3 transition-shadow transition-opacity select-none aspect-square w-full h-full max-w-[250px]',
         {
           'cursor-pointer hover:shadow-md': !isDisabled,
         },
