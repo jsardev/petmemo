@@ -1,5 +1,7 @@
 import clsx from 'clsx'
 
+import { ImageStack } from '@/shared/ui/ImageStack'
+
 import { GamePlayer } from '../model'
 
 type PlayerScoreProps = {
@@ -44,35 +46,11 @@ export const PlayerScore = ({
           'self-end': isOnRightSide,
         })}
       >
-        <div
-          className={clsx('flex', {
-            'flex-row-reverse': isOnRightSide,
-          })}
-        >
-          {player.cards.map((card, index) => (
-            <div
-              key={`player-score-image-${card.id}-${index}`}
-              className={clsx(
-                'relative w-8 h-8 rounded border-2 select-none overflow-hidden',
-                {
-                  '-ml-4 first:ml-0': !isOnRightSide,
-                  '-mr-4 first:mr-0': isOnRightSide,
-                },
-              )}
-            >
-              <img
-                className="h-full w-full object-cover blur-sm"
-                src={card.image.url}
-                draggable={false}
-              />
-              {index === player.cards.length - 1 && (
-                <div className="text-md absolute inset-0 flex items-center justify-center font-bold text-white">
-                  {player.cards.length}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+        <ImageStack
+          images={player.cards.map((card) => card.image.url)}
+          isReverse={isOnRightSide}
+          withCount
+        />
       </div>
     </div>
   )

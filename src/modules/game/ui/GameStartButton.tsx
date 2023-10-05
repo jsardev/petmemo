@@ -3,7 +3,15 @@ import { Button } from '@/shared/ui/Button'
 
 import { useGameActions } from '..'
 
-export const GameStartButton = () => {
+type GameStartButtonProps = {
+  className?: string
+  children: string
+}
+
+export const GameStartButton = ({
+  className,
+  children,
+}: GameStartButtonProps) => {
   const { playerCount, cardMatrixSize } = useGameSettings()
   const { startGame } = useGameActions()
 
@@ -12,8 +20,13 @@ export const GameStartButton = () => {
   }
 
   return (
-    <Button icon="i-lucide-play" navigateTo="/play" onClick={handleClick}>
-      Play
+    <Button
+      className={className}
+      icon="i-lucide-play"
+      navigateTo="/play"
+      onClick={handleClick}
+    >
+      {children}
     </Button>
   )
 }

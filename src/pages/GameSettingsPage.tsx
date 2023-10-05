@@ -11,7 +11,7 @@ export function GameSettingsPage() {
         <PlayersSettingsChooser />
         <CardsSettingsChooser />
       </div>
-      <GameStartButton />
+      <GameStartButton>Play</GameStartButton>
     </main>
   )
 }

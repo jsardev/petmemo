@@ -48,7 +48,7 @@ export const Button = forwardRef(
         ref={ref}
         className={clsx(
           className,
-          'rounded bg-primary px-6 py-3 text-lg text-white hover:bg-primary-500 focus:outline-none focus:ring-3 focus:ring-primary-500 disabled:bg-primary-300 flex items-center gap-2',
+          'rounded bg-primary px-6 py-3 text-lg text-white hover:bg-primary-500 focus:outline-none focus:ring-3 focus:ring-primary-500 disabled:bg-primary-300 flex justify-center items-center gap-2',
         )}
         onClick={handleClick}
         {...attributes}
