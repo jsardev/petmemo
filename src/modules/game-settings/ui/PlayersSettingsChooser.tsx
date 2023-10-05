@@ -1,13 +1,19 @@
 import { useShallow } from 'zustand/shallow'
 
-import { useGameSettingsState } from '@/modules/game-settings/model/state'
 import { Chooser } from '@/shared/ui/Chooser'
 
-const OPTIONS = [1, 2, 3, 4]
+import { useGameSettingsState } from '../model/state'
+
+const OPTIONS = [
+  { option: '1', value: 1 },
+  { option: '2', value: 2 },
+  { option: '3', value: 3 },
+  { option: '4', value: 4 },
+]
 
 export const PlayersSettingsChooser = () => {
   const [players, setPlayers] = useGameSettingsState(
-    useShallow((state) => [state.players, state.setPlayers]),
+    useShallow((state) => [state.playerCount, state.setPlayerCount]),
   )
 
   return (

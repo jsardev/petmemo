@@ -2,7 +2,7 @@ import clsx from 'clsx'
 
 type ChooserProps<T> = {
   icon: string
-  options: Array<T>
+  options: Array<{ option: string; value: T }>
   value: T
   onChange: (value: T) => void
 }
@@ -13,17 +13,17 @@ export const Chooser = <T extends number | string>({
   value,
   onChange,
 }: ChooserProps<T>) => {
-  const selectedOption = options.find((option) => option === value)
+  const selectedOption = options.find((option) => option.value === value)
 
   const handleClick = () => {
     const currentOptionIndex = options.indexOf(selectedOption || options[0])
 
     if (currentOptionIndex + 1 > options.length - 1) {
-      onChange(options[0])
+      onChange(options[0].value)
       return
     }
 
-    onChange(options[currentOptionIndex + 1])
+    onChange(options[currentOptionIndex + 1].value)
   }
 
   return (
@@ -32,7 +32,7 @@ export const Chooser = <T extends number | string>({
       onClick={handleClick}
     >
       <i className={clsx(icon, 'text-2xl')} />
-      {selectedOption}
+      {selectedOption?.option}
     </button>
   )
 }

@@ -8,6 +8,15 @@ dependencies:
   clsx:
     specifier: 2.0.0
     version: 2.0.0
+  immer:
+    specifier: ^10.0.3
+    version: 10.0.3
+  ky:
+    specifier: ^1.0.1
+    version: 1.0.1
+  lodash:
+    specifier: ^4.17.21
+    version: 4.17.21
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -19,12 +28,15 @@ dependencies:
     version: 6.16.0(react-dom@18.2.0)(react@18.2.0)
   zustand:
     specifier: 4.4.2
-    version: 4.4.2(@types/react@18.2.24)(react@18.2.0)
+    version: 4.4.2(@types/react@18.2.24)(immer@10.0.3)(react@18.2.0)
 
 devDependencies:
   '@iconify-json/lucide':
     specifier: 1.1.131
     version: 1.1.131
+  '@types/lodash':
+    specifier: ^4.14.199
+    version: 4.14.199
   '@types/node':
     specifier: ^20.8.2
     version: 20.8.2
@@ -58,12 +70,12 @@ devDependencies:
   eslint-import-resolver-typescript:
     specifier: ^3.6.1
     version: 3.6.1(@typescript-eslint/parser@6.7.4)(eslint-plugin-import@2.28.1)(eslint@8.50.0)
+  eslint-plugin-boundaries:
+    specifier: ^3.4.0
+    version: 3.4.0(@typescript-eslint/parser@6.7.4)(eslint-import-resolver-typescript@3.6.1)(eslint@8.50.0)
   eslint-plugin-import:
     specifier: ^2.28.1
     version: 2.28.1(@typescript-eslint/parser@6.7.4)(eslint-import-resolver-typescript@3.6.1)(eslint@8.50.0)
-  eslint-plugin-no-relative-import-paths:
-    specifier: ^1.5.2
-    version: 1.5.2
   eslint-plugin-react-hooks:
     specifier: 4.6.0
     version: 4.6.0(eslint@8.50.0)
@@ -728,6 +740,10 @@ packages:
 
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+    dev: true
+
+  /@types/lodash@4.14.199:
+    resolution: {integrity: sha512-Vrjz5N5Ia4SEzWWgIVwnHNEnb1UE1XMkvY5DGXrAeOGE9imk0hgTHh5GyDjLDJi9OTCn9oo9dXH1uToK1VRfrg==}
     dev: true
 
   /@types/node@20.8.2:
@@ -1722,6 +1738,25 @@ packages:
       - supports-color
     dev: true
 
+  /eslint-plugin-boundaries@3.4.0(@typescript-eslint/parser@6.7.4)(eslint-import-resolver-typescript@3.6.1)(eslint@8.50.0):
+    resolution: {integrity: sha512-bKB/XMu+zx14DCVkxe2yzkKgAoJQn+J7p0kmZm53/JzADbOdK5irhXG1THs92iCpgmTKtoQPjrGg3PA2FUwq6A==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      eslint: '>=6.0.0'
+    dependencies:
+      chalk: 4.1.2
+      eslint: 8.50.0
+      eslint-import-resolver-node: 0.3.9
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.7.4)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.50.0)
+      is-core-module: 2.13.0
+      micromatch: 4.0.5
+    transitivePeerDependencies:
+      - '@typescript-eslint/parser'
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
+      - supports-color
+    dev: true
+
   /eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.7.4)(eslint-import-resolver-typescript@3.6.1)(eslint@8.50.0):
     resolution: {integrity: sha512-9I9hFlITvOV55alzoKBI+K9q74kv0iKMeY6av5+umsNwayt59fz692daGyjR+oStBQgx6nwR9rXldDev3Clw+A==}
     engines: {node: '>=4'}
@@ -1755,10 +1790,6 @@ packages:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
       - supports-color
-    dev: true
-
-  /eslint-plugin-no-relative-import-paths@1.5.2:
-    resolution: {integrity: sha512-wMlL+TVuDhKk1plP+w3L4Hc7+u89vUkrOYq6/0ARjcYqwc9/YaS9uEXNzaqAk+WLoEgakzNL5JgJJw6m4qd5zw==}
     dev: true
 
   /eslint-plugin-react-hooks@4.6.0(eslint@8.50.0):
@@ -2171,6 +2202,10 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
+  /immer@10.0.3:
+    resolution: {integrity: sha512-pwupu3eWfouuaowscykeckFmVTpqbzW+rXFCX8rQLkZzM9ftBmU/++Ra+o+L27mz03zJTlyV4UUr+fdKNffo4A==}
+    dev: false
+
   /import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -2431,6 +2466,11 @@ packages:
     resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==}
     dev: true
 
+  /ky@1.0.1:
+    resolution: {integrity: sha512-UvcwpQO0LOuZwG0Ti3VDo6w57KYt+r4bWEYlNaMt82hgyFtse86QtOGum1RzsZni31FndXQl6NvtDArfunt2JQ==}
+    engines: {node: '>=18'}
+    dev: false
+
   /levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
@@ -2454,6 +2494,10 @@ packages:
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
+
+  /lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: false
 
   /loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
@@ -3340,7 +3384,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zustand@4.4.2(@types/react@18.2.24)(react@18.2.0):
+  /zustand@4.4.2(@types/react@18.2.24)(immer@10.0.3)(react@18.2.0):
     resolution: {integrity: sha512-qF3/vZHCrjPUX5DvPE3DPDZlh+FiAWRKlP9PI7SlW1MCk8q4vUCDqyWsbF8K41ne0Yx8eeeb0m1cypn1LqUMYQ==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -3356,6 +3400,7 @@ packages:
         optional: true
     dependencies:
       '@types/react': 18.2.24
+      immer: 10.0.3
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false

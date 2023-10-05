@@ -1,15 +1,15 @@
 import { create } from 'zustand'
 
 type GameSettingsState = {
-  players: number
-  cards: number
-  setPlayers: (players: number) => void
-  setCards: (cards: number) => void
+  playerCount: number
+  cardMatrixSize: number
+  setPlayerCount: (players: number) => void
+  setCardMatrixSize: (cards: number) => void
 }
 
 export const useGameSettingsState = create<GameSettingsState>((set) => ({
-  players: 1,
-  cards: 4,
-  setPlayers: (players: number) => set({ players }),
-  setCards: (cards: number) => set({ cards }),
+  playerCount: 1,
+  cardMatrixSize: 4,
+  setPlayerCount: (playerCount: number) => set({ playerCount }),
+  setCardMatrixSize: (cardMatrixSize: number) => set({ cardMatrixSize }),
 }))
