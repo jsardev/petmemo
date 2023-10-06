@@ -30,21 +30,25 @@ export const BoardCard = ({
   }
 
   return (
-    <img
+    <div
       tabIndex={0}
-      src={imageUrl}
-      width={width}
-      height={height}
       className={clsx(
         className,
-        'rounded-xl object-cover border-slate-2 border-3 transition-shadow transition-opacity select-none aspect-square w-full h-full max-w-[250px]',
+        'rounded-xl object-cover border-slate-2 border-3 transition-shadow transition-opacity select-none aspect-square w-full h-full overflow-hidden',
         {
           'cursor-pointer hover:shadow-md': !isDisabled,
         },
       )}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      draggable={false}
-    />
+    >
+      <img
+        className="h-full w-full object-cover"
+        src={imageUrl}
+        width={width}
+        height={height}
+        draggable={false}
+      />
+    </div>
   )
 }

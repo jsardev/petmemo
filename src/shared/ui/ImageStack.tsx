@@ -25,7 +25,7 @@ export const ImageStack = ({
         <div
           key={`image-stack-${index}`}
           className={clsx(
-            'relative w-8 h-8 rounded border-2 select-none overflow-hidden',
+            'relative w-6 h-6 sm:w-8 sm:h-8 rounded border-2 select-none overflow-hidden',
             {
               '-ml-4 first:ml-0': !isReverse,
               '-mr-4 first:mr-0': isReverse,
@@ -38,7 +38,7 @@ export const ImageStack = ({
             draggable={false}
           />
           {withCount && index === images.length - 1 && (
-            <div className="text-md absolute inset-0 flex items-center justify-center font-bold text-white">
+            <div className="sm:text-md absolute inset-0 flex items-center justify-center text-sm font-bold text-white">
               {images.length}
             </div>
           )}

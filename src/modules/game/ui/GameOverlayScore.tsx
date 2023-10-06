@@ -24,12 +24,12 @@ export const GameOverlayScore = ({
 
   return (
     <div
-      className={clsx(className, 'flex flex-col gap-4', {
+      className={clsx(className, 'flex flex-col gap-2 sm:gap-4', {
         'flex-col-reverse': isOnBottom,
       })}
     >
       <div
-        className={clsx('flex gap-4 items-center', {
+        className={clsx('flex gap-2 sm:gap-4 items-center', {
           'flex-row-reverse': isOnRightSide,
         })}
       >
@@ -37,7 +37,7 @@ export const GameOverlayScore = ({
           Player #{player.id + 1}
         </div>
         {itsTurn && (
-          <div className="h-5 w-5 animate-pulse rounded-full from-primary-400 to-primary-500 bg-gradient-to-r" />
+          <div className="h-3 w-3 animate-pulse rounded-full from-primary-400 to-primary-500 bg-gradient-to-r sm:h-5 sm:w-5" />
         )}
       </div>
       <div

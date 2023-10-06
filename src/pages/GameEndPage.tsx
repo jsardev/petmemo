@@ -3,12 +3,14 @@ import { Button } from '@/shared/ui/Button'
 
 export function GameEndPage() {
   return (
-    <main className="relative h-screen w-screen flex items-center justify-center">
-      <div className="flex flex-col items-center gap-16">
-        <div className="text-6xl font-medium text-slate-400">
-          Yay! All cats found! 😺
+    <main className="relative h-screen w-screen flex items-center justify-center p-8">
+      <div className="w-full flex flex-col items-center gap-16">
+        <div className="text-center text-2xl font-medium text-slate-400 sm:text-6xl">
+          Yay! 😺
+          <br />
+          All cats found!
         </div>
-        <GameScoreboard />
+        <GameScoreboard className="w-full" />
         <div className="flex flex-col gap-4">
           <GameStartButton>Play again</GameStartButton>
           <Button icon="i-lucide-settings" navigateTo="/" variant="secondary">

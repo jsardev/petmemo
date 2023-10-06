@@ -2,11 +2,16 @@ import { Scoreboard } from '@/shared/ui/Scoreboard'
 
 import { usePlayers } from '..'
 
-export const GameScoreboard = () => {
+type GameScoreboardProps = {
+  className?: string
+}
+
+export const GameScoreboard = ({ className }: GameScoreboardProps) => {
   const players = usePlayers()
 
   return (
     <Scoreboard
+      className={className}
       items={players.map((player) => ({
         name: `Player #${player.id + 1}`,
         score: player.cards.length,

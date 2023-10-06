@@ -1,6 +1,9 @@
+import clsx from 'clsx'
+
 import { ImageStack } from './ImageStack'
 
 type ScoreboardProps = {
+  className?: string
   items: Array<{
     name: string
     score: number
@@ -9,14 +12,23 @@ type ScoreboardProps = {
   itemScoreText: string
 }
 
-export const Scoreboard = ({ items, itemScoreText }: ScoreboardProps) => {
+export const Scoreboard = ({
+  className,
+  items,
+  itemScoreText,
+}: ScoreboardProps) => {
   const sortedItems = [...items].sort((a, b) => b.score - a.score)
 
   return (
-    <div className="flex flex-col gap-8">
+    <div
+      className={clsx(
+        className,
+        'grid gap-4 sm:gap-8 justify-center items-center',
+      )}
+    >
       {sortedItems.map((item, index) => (
-        <div className="relative flex items-center gap-6 text-2xl text-slate-700">
-          <div className="absolute left-[-4rem] text-5xl font-bold text-slate-200">
+        <div className="text-md relative flex items-center gap-6 text-slate-700 sm:text-2xl">
+          <div className="absolute left-[-2rem] text-2xl font-bold text-slate-200 sm:left-[-4rem] sm:text-5xl">
             {index + 1}.
           </div>
           <div className="flex items-center gap-2">

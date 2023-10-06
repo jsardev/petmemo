@@ -1,4 +1,3 @@
-import { GameNextTurnButton } from './GameNextTurnButton'
 import { GameOverlayMenu } from './GameOverlayMenu'
 import { GameOverlayScore } from './GameOverlayScore'
 import { useCurrentPlayer, usePlayers } from '..'
@@ -15,10 +14,10 @@ export const GameOverlay = () => {
   const currentPlayer = useCurrentPlayer()
 
   return (
-    <div className="fixed inset-0 grid grid-cols-1 grid-rows-1 [&>*]:col-span-full [&>*]:row-span-full">
+    <div className="absolute inset-0 grid grid-cols-1 grid-rows-1 [&>*]:col-span-full [&>*]:row-span-full">
       <GameOverlayMenu />
 
-      <div className="grid grid-cols-1 grid-rows-1 p-6 [&>*]:col-span-full [&>*]:row-span-full xl:p-12">
+      <div className="grid grid-cols-1 grid-rows-1 p-4 [&>*]:col-span-full [&>*]:row-span-full lg:p-12 sm:p-8">
         {players.map((player, index) => {
           const horizontalPlacement = [0, 3].includes(index) ? 'left' : 'right'
           const verticalPlacement = [2, 3].includes(index) ? 'bottom' : 'top'
@@ -34,8 +33,6 @@ export const GameOverlay = () => {
             />
           )
         })}
-
-        <GameNextTurnButton className="self-end justify-self-center" />
       </div>
     </div>
   )

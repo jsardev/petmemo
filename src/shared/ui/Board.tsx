@@ -13,7 +13,7 @@ export const Board = ({ className, children }: BoardProps) => {
     <div
       className={clsx(
         className,
-        'grid h-full w-full content-center justify-center gap-8',
+        'grid h-full w-full content-center justify-center gap-2 sm:gap-4',
       )}
       style={{
         gridTemplateColumns: `repeat(${matrixSize}, minmax(0, max-content))`,

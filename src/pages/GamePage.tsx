@@ -2,6 +2,7 @@ import {
   GameBoard,
   GameManager,
   GameOverlay,
+  GameNextTurnButton,
   useAreCardsLoading,
 } from '@/modules/game'
 import { Loader } from '@/shared/ui/Loader'
@@ -10,7 +11,7 @@ export function GamePage() {
   const areCardsLoading = useAreCardsLoading()
 
   return (
-    <main className="relative h-screen w-screen flex items-center justify-center gap-4 p-12 landscape:p-28 xl:p-40">
+    <main className="relative h-[100dvh] w-auto flex items-center justify-center px-4 pb-16 pt-24 lg:px-12 sm:px-8 lg:pb-12 sm:pb-16 sm:pt-32">
       {areCardsLoading ? (
         <Loader>
           We're preparing <br />
@@ -20,7 +21,11 @@ export function GamePage() {
         <>
           <GameManager />
           <GameOverlay />
-          <GameBoard className="z-10" />
+
+          <div className="grid grid-cols-1 grid-rows-1 max-h-full w-full place-items-center gap-8 lg:justify-start">
+            <GameBoard className="z-10" />
+            <GameNextTurnButton className="z-10" />
+          </div>
         </>
       )}
     </main>
