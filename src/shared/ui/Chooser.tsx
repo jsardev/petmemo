@@ -28,7 +28,7 @@ export const Chooser = <T extends number | string>({
 
   return (
     <button
-      className="w-24 flex flex-col cursor-pointer select-none items-center justify-center gap-2 rounded bg-primary-400 p-5 text-2xl font-bold text-white hover:bg-primary-500 focus:outline-none focus:ring-3 focus:ring-primary-500"
+      className="w-24 flex flex-col cursor-pointer select-none items-center justify-center gap-2 rounded from-primary-400 to-primary-500 bg-gradient-to-r p-5 text-2xl font-bold text-white hover:to-primary-600 focus:outline-none focus:ring-3 focus:ring-primary-500"
       onClick={handleClick}
     >
       <i className={clsx(icon, 'text-2xl')} />

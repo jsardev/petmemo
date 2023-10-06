@@ -5,7 +5,7 @@ export default defineConfig({
   presets: [presetUno(), presetIcons()],
   theme: {
     colors: {
-      primary: colors.indigo,
+      primary: colors.purple,
     },
   },
 })

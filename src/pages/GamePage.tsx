@@ -12,7 +12,10 @@ export function GamePage() {
   return (
     <main className="relative h-screen w-screen flex items-center justify-center gap-4 p-48">
       {areCardsLoading ? (
-        <Loader>Loading cards...</Loader>
+        <Loader>
+          We're preparing <br />
+          some cute pics here 😻
+        </Loader>
       ) : (
         <>
           <GameManager />
