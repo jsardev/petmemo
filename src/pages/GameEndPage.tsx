@@ -11,7 +11,7 @@ export function GameEndPage() {
         <GameScoreboard />
         <div className="flex flex-col gap-4">
           <GameStartButton>Play again</GameStartButton>
-          <Button icon="i-lucide-settings" navigateTo="/">
+          <Button icon="i-lucide-settings" navigateTo="/" variant="secondary">
             Change settings
           </Button>
         </div>

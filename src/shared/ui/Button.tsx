@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 type CommonButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   icon?: string
   className?: string
+  variant?: 'primary' | 'secondary'
   children: string
 }
 
@@ -25,6 +26,7 @@ export const Button = forwardRef(
     {
       icon,
       className,
+      variant = 'primary',
       navigateTo,
       children,
       onClick,
@@ -48,7 +50,13 @@ export const Button = forwardRef(
         ref={ref}
         className={clsx(
           className,
-          'rounded font-medium bg-gradient-to-r from-primary-400 to-primary-500 px-6 py-3 text-lg text-white hover:to-primary-600 focus:outline-none focus:ring-3 focus:ring-primary-500 disabled:from-primary-200 disabled:to-primary-300 flex justify-center items-center gap-2 transition-colors',
+          'rounded font-medium px-6 py-3 text-lg  focus:outline-none focus:ring-3 focus:ring-primary-500 flex justify-center items-center gap-2',
+          {
+            'text-white hover:to-primary-600 bg-gradient-to-r from-primary-400 to-primary-500 disabled:from-primary-200 disabled:to-primary-300':
+              variant === 'primary',
+            'border-2 border-primary text-primary hover:border-primary-600 hover:text-primary-600':
+              variant === 'secondary',
+          },
         )}
         onClick={handleClick}
         {...attributes}
