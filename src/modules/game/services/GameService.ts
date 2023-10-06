@@ -1,6 +1,7 @@
 import shuffle from 'lodash/shuffle'
 
 import { ImageAPIClient } from '@/shared/infrastructure/api'
+import { preloadImages } from '@/shared/utils'
 
 import { Card, GameCard, GamePlayer } from '../model'
 
@@ -25,6 +26,8 @@ export class GameService {
     const images = await this.apiClient.fetchImages({
       limit: cardAmount / 2,
     })
+
+    await preloadImages(images.map((image) => image.url))
 
     const cards: Card[] = images.map((image) => ({
       id: image.id,
