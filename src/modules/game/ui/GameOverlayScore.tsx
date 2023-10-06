@@ -12,7 +12,7 @@ type PlayerScoreProps = {
   className?: string
 }
 
-export const PlayerScore = ({
+export const GameOverlayScore = ({
   player,
   itsTurn,
   horizontalPlacement,
@@ -33,8 +33,8 @@ export const PlayerScore = ({
           'flex-row-reverse': isOnRightSide,
         })}
       >
-        <div className="text-xl font-medium text-slate">
-          Player #{player.id}
+        <div className="text-xl font-medium text-slate-400">
+          Player #{player.id + 1}
         </div>
         {itsTurn && (
           <div className="h-5 w-5 animate-pulse rounded-full from-primary-400 to-primary-500 bg-gradient-to-r" />

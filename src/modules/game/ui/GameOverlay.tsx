@@ -1,5 +1,6 @@
 import { GameNextTurnButton } from './GameNextTurnButton'
-import { PlayerScore } from './PlayerScore'
+import { GameOverlayMenu } from './GameOverlayMenu'
+import { GameOverlayScore } from './GameOverlayScore'
 import { useCurrentPlayer, usePlayers } from '..'
 
 const playerIndexToClassesMap: Record<number, string> = {
@@ -14,24 +15,28 @@ export const GameOverlay = () => {
   const currentPlayer = useCurrentPlayer()
 
   return (
-    <div className="fixed inset-0 grid grid-cols-1 grid-rows-1 p-12 [&>*]:col-span-full [&>*]:row-span-full">
-      {players.map((player, index) => {
-        const horizontalPlacement = [0, 3].includes(index) ? 'left' : 'right'
-        const verticalPlacement = [2, 3].includes(index) ? 'bottom' : 'top'
+    <div className="fixed inset-0 grid grid-cols-1 grid-rows-1 [&>*]:col-span-full [&>*]:row-span-full">
+      <GameOverlayMenu />
 
-        return (
-          <PlayerScore
-            key={player.id}
-            player={player}
-            itsTurn={player === currentPlayer}
-            horizontalPlacement={horizontalPlacement}
-            verticalPlacement={verticalPlacement}
-            className={playerIndexToClassesMap[index]}
-          />
-        )
-      })}
+      <div className="grid grid-cols-1 grid-rows-1 p-6 [&>*]:col-span-full [&>*]:row-span-full xl:p-12">
+        {players.map((player, index) => {
+          const horizontalPlacement = [0, 3].includes(index) ? 'left' : 'right'
+          const verticalPlacement = [2, 3].includes(index) ? 'bottom' : 'top'
 
-      <GameNextTurnButton className="self-end justify-self-center" />
+          return (
+            <GameOverlayScore
+              key={player.id}
+              player={player}
+              itsTurn={player === currentPlayer}
+              horizontalPlacement={horizontalPlacement}
+              verticalPlacement={verticalPlacement}
+              className={playerIndexToClassesMap[index]}
+            />
+          )
+        })}
+
+        <GameNextTurnButton className="self-end justify-self-center" />
+      </div>
     </div>
   )
 }
