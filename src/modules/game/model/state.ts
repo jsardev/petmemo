@@ -33,7 +33,15 @@ export const useGameState = create(
     isFinished: false,
 
     startGame: async (playerCount: number, cardMatrixSize: number) => {
-      set({ areCardsLoading: true })
+      set(
+        produce((state: GameState) => {
+          state.isFinished = false
+          state.areCardsLoading = true
+          state.turn.playerIndex = 0
+          state.turn.selectedCards = []
+          state.turn.isFinished = false
+        }),
+      )
 
       // TODO: add settings to choose an api for images
       const gameService = new GameService(
