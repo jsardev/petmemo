@@ -19,7 +19,6 @@ export type GameTurn = {
 
 export type GameCard = Card & {
   index: number
-  collected: boolean
 }
 
 export type GamePlayer = Player & {
