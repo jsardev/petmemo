@@ -1,4 +1,4 @@
-# petmemo
+![petmemo](https://github.com/sarneeh/petmemo/assets/11553624/fa53aa5a-dc09-401b-a3b0-68237bf03333)
 
 A showcase application built with Vite and React. Powered by [The Cats API](https://thecatapi.com/).
 
