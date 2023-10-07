@@ -1,27 +1,49 @@
-# React + TypeScript + Vite
+# petmemo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A showcase application built with Vite and React. Powered by [The Cats API](https://thecatapi.com/).
 
-Currently, two official plugins are available:
+[Live demo](https://petmemo-sarneeh.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How to run
 
-## Expanding the ESLint configuration
+### Run in development mode
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```
+pnpm install
+pnpm dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Run in production mode
+
+```
+pnpm build
+pnpm preview
+```
+
+## Technology
+
+Following libraries and technologies were used in this project:
+
+- [React](https://github.com/facebook/react) - UI Library
+- [React Router](https://github.com/remix-run/react-router) - Routing
+- [Zustand](https://github.com/pmndrs/zustand) - State Management
+- [UnoCSS](https://github.com/unocss/unocss) - CSS Framework
+- [Ky](https://github.com/sindresorhus/ky) - HTTP Client
+
+### Rationale
+
+#### Zustand
+
+I heard a lot about Zustand and it's simplicity. As I never had the opportunity to work with it, I decided to check out its capabilities in this project. What I was looking for in a state management for this project was high React integration (e.g. state selector hooks out of the box), strategies for preventing rerenders and easy nested state updates (e.g. [integration with immer](https://github.com/pmndrs/zustand#sick-of-reducers-and-changing-nested-states-use-immer)).
+
+#### UnoCSS
+
+I love the Utility CSS approach and found out that it's very effective in prototyping and generally fast development. It gives a lot of performance benefits out of the box as you only fetch the CSS you use in your markup, and the reusability level is very high. I did choose UnoCSS over [Tailwind](https://tailwindcss.com/) as it is a lot faster (vs Tailwind's JIT), more customizable, and gives some cool features out of the box like e.g. [pure css icons](https://antfu.me/posts/icons-in-pure-css).
+
+## Assets
+
+Icons have been taken from an open-source project called [Lucide](https://lucide.dev/). Integrated easily with the brilliant [UnoCSS icons preset](https://unocss.dev/presets/icons).
+
+## Architecture
+
+For a detailed description and overview of the architecture, check [this document](https://www.craft.me/s/Qb7mtyIAi6s62S).
