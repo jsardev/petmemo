@@ -4,6 +4,20 @@ A showcase application built with Vite and React. Powered by [The Cats API](http
 
 [Live demo](https://petmemo-sarneeh.vercel.app/)
 
+## Prerequisities
+
+Important! Unfortunately the Cats API does not work properly without an API key. If you want to run the app locally, you need to grab a key from the [Cats API](https://thecatapi.com) website and put it in a `.env` file, like this:
+
+```
+VITE_API_KEY=YOUR_KEY_HERE
+```
+
+### What exactly does not work?
+
+The *limit* query parameter does not work without an API key and always returns 10 entries. I didn't want to hack around this as this is a bad practice.
+
+Example: https://api.thecatapi.com/v1/images/search?limit=2
+
 ## How to run
 
 ### Run in development mode
