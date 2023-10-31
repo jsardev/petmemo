@@ -36,6 +36,11 @@ module.exports = {
         mode: 'file',
       },
       {
+        type: 'assets',
+        pattern: 'assets/*',
+        mode: 'file',
+      },
+      {
         type: 'shared',
         pattern: 'shared/*',
         mode: 'folder',
@@ -59,6 +64,11 @@ module.exports = {
       {
         'newlines-between': 'always',
         pathGroups: [
+          {
+            pattern: '@/assets/**',
+            group: 'index',
+            position: 'after',
+          },
           {
             pattern: '@/**',
             group: 'external',
@@ -84,7 +94,7 @@ module.exports = {
         default: 'disallow',
         rules: [
           {
-            target: ['app', 'pages', 'shared'],
+            target: ['app', 'pages', 'shared', 'assets'],
             allow: '*',
           },
           {
@@ -110,6 +120,10 @@ module.exports = {
           {
             from: ['pages'],
             allow: ['shared', 'modules'],
+          },
+          {
+            from: ['shared'],
+            allow: ['assets'],
           },
         ],
       },
