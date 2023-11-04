@@ -2,9 +2,10 @@ import clsx from 'clsx'
 
 import { BoardCard } from '@/shared/ui/BoardCard'
 
-import { GameCard } from '..'
+import { useGameBoardCard } from './hooks'
+import { GameCard } from '../..'
 
-type GameBoardCardProps = {
+export type GameBoardCardProps = {
   card: GameCard
   frontImageUrl: string
   isCollected: boolean
@@ -24,12 +25,11 @@ export const GameBoardCard = ({
   const imageUrl = isRevealed && !isCollected ? card.image.url : frontImageUrl
   const isInteractive = !isDisabled && !isRevealed && !isCollected
 
-  const handleClick = () => {
-    onClick(card)
-  }
+  const { ref, handleClick } = useGameBoardCard({ card, onClick })
 
   return (
     <BoardCard
+      ref={ref}
       imageUrl={imageUrl}
       width={card.image.width}
       height={card.image.height}

@@ -1,13 +1,7 @@
-import {
-  useIsCardRevealed,
-  useIsCardCollected,
-  useTurn,
-  useCards,
-  useGameActions,
-} from '@/modules/game'
-import { Board } from '@/shared/ui/Board'
+import { Board } from '@/shared/ui/Board/Board'
 
-import { GameBoardCard } from './GameBoardCard'
+import { useGameBoard } from './hooks'
+import { GameBoardCard } from '../GameBoardCard/GameBoardCard'
 
 // TODO: add settings to choose the front image from a set of chosen images
 const FRONT_IMAGE_URL =
@@ -18,11 +12,8 @@ type GameBoardProps = {
 }
 
 export const GameBoard = ({ className }: GameBoardProps) => {
-  const cards = useCards()
-  const { isFinished } = useTurn()
-  const isCardCollected = useIsCardCollected()
-  const isCardRevealed = useIsCardRevealed()
-  const { selectCard } = useGameActions()
+  const { cards, isTurnFinished, isCardCollected, isCardRevealed, selectCard } =
+    useGameBoard()
 
   return (
     <Board className={className}>
@@ -33,7 +24,7 @@ export const GameBoard = ({ className }: GameBoardProps) => {
           frontImageUrl={FRONT_IMAGE_URL}
           isCollected={isCardCollected(card)}
           isRevealed={isCardRevealed(card)}
-          isDisabled={isFinished}
+          isDisabled={isTurnFinished}
           onClick={selectCard}
         />
       ))}

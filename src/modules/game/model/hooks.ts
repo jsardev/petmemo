@@ -30,16 +30,23 @@ export const useIsCardRevealed = () => {
   return (card: GameCard) => isCardRevealed(selectedCards, card)
 }
 
+export const useCardRefs = () => useGameState((state) => state.refs.cards)
+
+export const useAllCardsRegistered = () =>
+  useGameState((state) => state.cards.length === state.refs.cards.length)
+
 export const useGameActions = () => {
   const selectCard = useGameState((state) => state.selectCard)
   const startGame = useGameState((state) => state.startGame)
   const endGame = useGameState((state) => state.endGame)
   const endTurn = useGameState((state) => state.endTurn)
+  const registerCardRef = useGameState((state) => state.registerCardRef)
 
   return {
     startGame,
     endGame,
     selectCard,
     endTurn,
+    registerCardRef,
   }
 }
