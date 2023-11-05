@@ -3,9 +3,6 @@ import { useGameState } from './state'
 
 type GameStateListener<T> = (selectedState: T, previousSelectedState: T) => void
 
-export const listenForGameFinished = (listener: GameStateListener<boolean>) =>
-  useGameState.subscribe((state) => state.isFinished, listener)
-
 export const listenForAllCardsCollected = (
   listener: GameStateListener<boolean>,
 ) =>

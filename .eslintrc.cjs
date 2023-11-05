@@ -95,7 +95,7 @@ module.exports = {
         rules: [
           {
             target: ['app', 'pages', 'shared', 'assets'],
-            allow: '*',
+            allow: '**',
           },
           {
             target: ['modules'],
@@ -123,7 +123,7 @@ module.exports = {
           },
           {
             from: ['shared'],
-            allow: ['assets'],
+            allow: ['shared', 'assets'],
           },
         ],
       },

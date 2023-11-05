@@ -1,13 +1,18 @@
 import clsx from 'clsx'
 import { Children, ReactNode } from 'react'
 
+import { useBoard } from './hooks'
+import { withBoardContext } from './withBoardContext'
+
 type BoardProps = {
   className?: string
   children: ReactNode
 }
 
-export const Board = ({ className, children }: BoardProps) => {
+export const Board = withBoardContext(({ className, children }: BoardProps) => {
   const matrixSize = Math.sqrt(Children.count(children))
+
+  const { handleKeyDown } = useBoard(matrixSize)
 
   return (
     <div
@@ -19,8 +24,9 @@ export const Board = ({ className, children }: BoardProps) => {
         gridTemplateColumns: `repeat(${matrixSize}, minmax(0, max-content))`,
         gridTemplateRows: `repeat(${matrixSize}, minmax(0, max-content))`,
       }}
+      onKeyDown={handleKeyDown}
     >
       {children}
     </div>
   )
-}
+})
