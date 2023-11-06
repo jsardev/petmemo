@@ -23,7 +23,7 @@ const useFocusFirstCardOnMount = () => {
   }, [allCardsRegistered, cardRefs])
 }
 
-const useFocusNextCardOnSelectCard = () => {
+const useFocusNextCardOnCardSelect = () => {
   const cardRefs = useCardRefs()
   const selectedCards = useSelectedCards()
   const allCardsRegistered = useAllCardsRegistered()
@@ -48,7 +48,7 @@ export const useGameBoard = () => {
   const { selectCard } = useGameActions()
 
   useFocusFirstCardOnMount()
-  useFocusNextCardOnSelectCard()
+  useFocusNextCardOnCardSelect()
 
   return {
     cards,

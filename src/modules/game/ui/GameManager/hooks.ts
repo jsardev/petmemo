@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { useGameActions, listenForAllCardsCollected } from '..'
+import { listenForAllCardsCollected, useGameActions } from '../..'
 
-export const GameManager = () => {
+export const useGameManager = () => {
   const navigate = useNavigate()
   const { endGame } = useGameActions()
 
@@ -15,6 +15,4 @@ export const GameManager = () => {
       }
     })
   }, [navigate, endGame])
-
-  return null
 }
