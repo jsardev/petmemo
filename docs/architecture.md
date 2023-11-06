@@ -46,7 +46,7 @@ Those are building blocks that encapsulate some of the domain logic to decrease 
 
 Infrastructure elements related to the domain. Often composed from reusable elements from `shared/infrastructure`.
 
-Examples: `CardRepository`, `CardAPIClient`
+Examples: `PetImageApiClient`
 
 #### Services
 

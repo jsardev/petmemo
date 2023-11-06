@@ -12,11 +12,11 @@ export const GameStartButton = ({
   className,
   children,
 }: GameStartButtonProps) => {
-  const { playerCount, cardMatrixSize } = useGameSettings()
+  const gameSettings = useGameSettings()
   const { startGame } = useGameActions()
 
   const handleClick = () => {
-    startGame(playerCount, cardMatrixSize)
+    startGame(gameSettings)
   }
 
   return (

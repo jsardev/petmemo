@@ -2,7 +2,7 @@ import { produce } from 'immer'
 import { create } from 'zustand'
 import { subscribeWithSelector } from 'zustand/middleware'
 
-import { catsApiClient } from '@/shared/infrastructure/api'
+import { GameSettings } from '@/modules/game-settings'
 
 import { GamePlayer, GameCard, GameTurn } from './types'
 import { GameService } from '../services/GameService'
@@ -18,7 +18,7 @@ export type GameState = {
     cards: Array<HTMLElement>
   }
 
-  startGame: (playerCount: number, cardMatrixSize: number) => void
+  startGame: (settings: GameSettings) => void
   endGame: () => void
   selectCard: (card: GameCard) => void
   endTurn: () => void
@@ -42,7 +42,7 @@ export const useGameState = create(
       cards: [],
     },
 
-    startGame: async (playerCount: number, cardMatrixSize: number) => {
+    startGame: async (settings: GameSettings) => {
       set(
         produce((state: GameState) => {
           state.isFinished = false
@@ -53,12 +53,7 @@ export const useGameState = create(
         }),
       )
 
-      // TODO: add settings to choose an api for images
-      const gameService = new GameService(
-        playerCount,
-        cardMatrixSize,
-        catsApiClient,
-      )
+      const gameService = new GameService(settings)
       const players = gameService.initializePlayers()
       const cards = await gameService.initializeCards()
 

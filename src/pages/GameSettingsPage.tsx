@@ -2,6 +2,7 @@ import { GameStartButton } from '@/modules/game'
 import {
   PlayersSettingsChooser,
   CardsSettingsChooser,
+  PetTypeSettingsChooser,
 } from '@/modules/game-settings'
 import { Logo } from '@/shared/ui/Logo'
 
@@ -17,6 +18,7 @@ export function GameSettingsPage() {
       <div className="flex gap-4">
         <PlayersSettingsChooser />
         <CardsSettingsChooser />
+        <PetTypeSettingsChooser />
       </div>
       <GameStartButton>Play</GameStartButton>
     </main>
