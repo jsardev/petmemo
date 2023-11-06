@@ -1,9 +1,9 @@
 import {
   GameBoard,
-  GameManager,
   GameOverlay,
   GameNextTurnButton,
   useAreCardsLoading,
+  GameManager,
 } from '@/modules/game'
 import { Loader } from '@/shared/ui/Loader'
 

@@ -1,8 +1,9 @@
-import { RefObject, useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { useTurn } from '../..'
 
-export const useFocusButtonOnTurnEnd = (ref: RefObject<HTMLElement>) => {
+export const useFocusElementOnTurnEnd = <T extends HTMLElement>() => {
+  const ref = useRef<T>(null)
   const { isFinished } = useTurn()
 
   useEffect(() => {
@@ -10,4 +11,6 @@ export const useFocusButtonOnTurnEnd = (ref: RefObject<HTMLElement>) => {
       ref.current?.focus()
     }
   }, [isFinished, ref])
+
+  return ref
 }

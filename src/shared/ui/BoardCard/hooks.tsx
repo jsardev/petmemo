@@ -12,7 +12,9 @@ export const useBoardCard = (forwardedRef: ForwardedRef<HTMLButtonElement>) => {
     if (ref.current) {
       return registerCardElement(ref.current)
     }
-  }, [ref, registerCardElement])
+    // ref does not need to be in the dependency array as it's a RefObject
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [registerCardElement])
 
   return { ref }
 }
