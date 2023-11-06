@@ -1,19 +1,15 @@
 import shuffle from 'lodash/shuffle'
 
-import { ImageAPIClient } from '@/shared/infrastructure/api'
+import { GameSettings } from '@/modules/game-settings'
 import { preloadImages } from '@/shared/utils'
 
 import { Card, GameCard, GamePlayer } from '../model'
 
 export class GameService {
-  constructor(
-    private playerCount: number,
-    private cardMatrixSize: number,
-    private apiClient: ImageAPIClient,
-  ) {}
+  constructor(private settings: GameSettings) {}
 
   initializePlayers(): GamePlayer[] {
-    return [...new Array(this.playerCount)].map((_, index) => ({
+    return [...new Array(this.settings.playerCount)].map((_, index) => ({
       id: index,
       cards: [],
       score: 0,
@@ -21,9 +17,10 @@ export class GameService {
   }
 
   async initializeCards(): Promise<GameCard[]> {
-    const cardAmount = this.cardMatrixSize * this.cardMatrixSize
+    const { cardMatrixSize, apiClient } = this.settings
+    const cardAmount = cardMatrixSize * cardMatrixSize
 
-    const images = await this.apiClient.fetchImages({
+    const images = await apiClient.fetchImages({
       limit: cardAmount / 2,
     })
 
