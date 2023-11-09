@@ -1,4 +1,4 @@
-import shuffle from 'lodash/shuffle'
+import { shuffle } from 'remeda'
 
 import { GameSettings } from '@/modules/game-settings'
 import { preloadImages } from '@/shared/utils'

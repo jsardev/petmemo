@@ -11,3 +11,6 @@ export const listenForAllCardsCollected = (
     const collectedCards = selectCollectedCards(state)
     return cards.length === collectedCards.length * 2
   }, listener)
+
+export const listenToTurnTimer = (listener: GameStateListener<number>) =>
+  useGameState.subscribe((state) => state.turn.timer, listener)

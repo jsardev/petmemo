@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { useGameActions, useTurn } from '@/modules/game'
+import { useTurnActions, useTurn, GameTurnPhase } from '@/modules/game'
 import { Button } from '@/shared/ui/Button'
 
 import { useFocusElementOnTurnEnd } from './hooks'
@@ -10,11 +10,17 @@ type GameNextTurnButtonProps = {
 }
 
 export const GameNextTurnButton = ({ className }: GameNextTurnButtonProps) => {
-  const { isFinished } = useTurn()
-  const { endTurn } = useGameActions()
+  const { isFinished, phase } = useTurn()
+  const { nextTurn } = useTurnActions()
   const ref = useFocusElementOnTurnEnd<HTMLButtonElement>()
 
+  const isTurnCooldown = phase === GameTurnPhase.COOLDOWN
   const icon = isFinished ? 'i-lucide-play' : 'i-lucide-hourglass'
+  const text = isFinished
+    ? 'Next turn'
+    : isTurnCooldown
+    ? 'Cooldown'
+    : 'Select cards'
 
   return (
     <Button
@@ -23,10 +29,10 @@ export const GameNextTurnButton = ({ className }: GameNextTurnButtonProps) => {
       className={clsx(className, {
         'animate-head-shake': isFinished,
       })}
-      onClick={endTurn}
+      onClick={nextTurn}
       disabled={!isFinished}
     >
-      {isFinished ? 'Next turn' : 'Select cards'}
+      {text}
     </Button>
   )
 }

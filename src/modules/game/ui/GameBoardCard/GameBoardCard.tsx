@@ -33,9 +33,10 @@ export const GameBoardCard = ({
       imageUrl={imageUrl}
       width={card.image.width}
       height={card.image.height}
-      className={clsx('animate-duration-500', {
+      className={clsx('animate-duration-500 transition-opacity', {
         'animate-flip-in-y': isRevealed,
         'opacity-20': isCollected,
+        'opacity-50': isDisabled && !isCollected,
       })}
       onClick={handleClick}
       isDisabled={!isInteractive}
