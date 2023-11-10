@@ -1,18 +1,31 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { listenForAllCardsCollected, useGameActions } from '../..'
+import { useGameSettings } from '@/modules/game-settings'
+
+import { listenToAllCardsCollected, useGameActions } from '../..'
 
 export const useGameManager = () => {
   const navigate = useNavigate()
-  const { endGame } = useGameActions()
+  const gameSettings = useGameSettings()
+  const { startGame, endGame } = useGameActions()
 
   useEffect(() => {
-    return listenForAllCardsCollected((areAllCardsCollected) => {
-      if (areAllCardsCollected) {
-        endGame()
-        navigate('/scoreboard')
-      }
-    })
-  }, [navigate, endGame])
+    const unsubscribeFromGameEvents = startGame()
+
+    // TODO: refactor to use an observable that emits when game ends
+    const unsubscribeFromAllCardsCollected = listenToAllCardsCollected(
+      (areAllCardsCollected) => {
+        if (areAllCardsCollected) {
+          endGame()
+          navigate('/scoreboard')
+        }
+      },
+    )
+
+    return () => {
+      unsubscribeFromGameEvents()
+      unsubscribeFromAllCardsCollected()
+    }
+  }, [navigate, endGame, startGame, gameSettings])
 }

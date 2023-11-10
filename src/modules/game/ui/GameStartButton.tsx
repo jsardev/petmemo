@@ -13,10 +13,10 @@ export const GameStartButton = ({
   children,
 }: GameStartButtonProps) => {
   const gameSettings = useGameSettings()
-  const { startGame } = useGameActions()
+  const { prepareGame } = useGameActions()
 
   const handleClick = () => {
-    startGame(gameSettings)
+    prepareGame(gameSettings)
   }
 
   return (

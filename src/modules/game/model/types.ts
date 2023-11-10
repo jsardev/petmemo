@@ -39,6 +39,7 @@ export type GameTurnActions = {
   actions: {
     selectCard: (card: GameCard) => void
     setTurnPhase: (phase: GameTurnPhase) => void
+    nextTurnPhase: () => void
     startTurnTimer: () => void
     stopTurnTimer: () => void
     restartTurnTimer: () => void
@@ -65,7 +66,8 @@ export type GameBaseState = {
 
 export type GameBaseActions = {
   actions: {
-    startGame: (settings: GameSettings) => void
+    prepareGame: (settings: GameSettings) => Promise<void>
+    startGame: () => () => void
     resetGame: () => void
     endGame: () => void
     registerCardRef: (element: HTMLElement) => () => void

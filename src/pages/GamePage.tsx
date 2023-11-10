@@ -4,7 +4,6 @@ import {
   GameNextTurnButton,
   useAreCardsLoading,
   GameManager,
-  GameTurnManager,
   GameTurnTimer,
 } from '@/modules/game'
 import { Loader } from '@/shared/ui/Loader'
@@ -22,7 +21,6 @@ export function GamePage() {
       ) : (
         <>
           <GameManager />
-          <GameTurnManager />
           <GameOverlay />
 
           <div className="grid grid-cols-1 grid-rows-1 max-h-full w-full place-items-center gap-8 lg:justify-start">

@@ -1,5 +1,3 @@
-import { merge } from 'remeda'
-
 import { ImmerStateCreator } from '@/shared/types/state'
 
 import { selectCurrentPlayer } from './selectors'
@@ -61,9 +59,21 @@ export const createTurnStateSlice: ImmerStateCreator<
 
       setTurnPhase: (phase: GameTurnPhase) => {
         set((state) => {
-          state.turn.timer = GAME_TURN_PHASE_TO_TIMER_VALUE[phase]
           state.turn.phase = phase
         })
+
+        get().turn.actions.resetTurnTimer()
+      },
+
+      nextTurnPhase: () => {
+        switch (get().turn.phase) {
+          case GameTurnPhase.ACTION: {
+            return get().turn.actions.endTurn()
+          }
+          case GameTurnPhase.COOLDOWN: {
+            return get().turn.actions.nextTurn()
+          }
+        }
       },
 
       startTurnTimer: () => {
@@ -85,8 +95,7 @@ export const createTurnStateSlice: ImmerStateCreator<
 
       resetTurnTimer: () => {
         set((state) => {
-          state.turn.timer =
-            GAME_TURN_PHASE_TO_TIMER_VALUE[GameTurnPhase.ACTION]
+          state.turn.timer = GAME_TURN_PHASE_TO_TIMER_VALUE[state.turn.phase]
         })
 
         get().turn.actions.restartTurnTimer()
@@ -120,7 +129,7 @@ export const createTurnStateSlice: ImmerStateCreator<
 
       resetTurn: () => {
         set((state) => {
-          merge(state.turn, defaultState)
+          state.turn = { ...state.turn, ...defaultState }
         })
       },
     },

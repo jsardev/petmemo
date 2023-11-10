@@ -3,6 +3,7 @@ import { castDraft } from 'immer'
 import { GameSettings } from '@/modules/game-settings'
 import { ImmerStateCreator } from '@/shared/types/state'
 
+import { listenToTurnTimer } from './subscriptions'
 import { GameState, GameBaseStateSlice } from './types'
 import { GameService } from '../services/GameService'
 
@@ -20,7 +21,7 @@ export const createGameStateSlice: ImmerStateCreator<
   },
 
   actions: {
-    startGame: async (settings: GameSettings) => {
+    prepareGame: async (settings: GameSettings) => {
       get().actions.resetGame()
 
       const gameService = new GameService(settings)
@@ -28,6 +29,22 @@ export const createGameStateSlice: ImmerStateCreator<
       const cards = await gameService.initializeCards()
 
       set({ players, cards, areCardsLoading: false })
+    },
+
+    startGame: () => {
+      get().turn.actions.startTurnTimer()
+
+      // TODO: refactor to observable that only emits on timer finished
+      const unsubscribeFromTurnTimer = listenToTurnTimer((timer) => {
+        if (timer === 0) {
+          get().turn.actions.nextTurnPhase()
+        }
+      })
+
+      return () => {
+        get().turn.actions.stopTurnTimer()
+        unsubscribeFromTurnTimer()
+      }
     },
 
     resetGame: () => {
