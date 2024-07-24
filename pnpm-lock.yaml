@@ -26,9 +26,15 @@ dependencies:
   remeda:
     specifier: ^1.29.0
     version: 1.29.0
+  rxjs:
+    specifier: ^7.8.1
+    version: 7.8.1
   zustand:
     specifier: 4.4.2
     version: 4.4.2(@types/react@18.2.24)(immer@10.0.3)(react@18.2.0)
+  zustand-rx:
+    specifier: ^2.0.1
+    version: 2.0.1(rxjs@7.8.1)(zustand@4.4.2)
 
 devDependencies:
   '@iconify-json/lucide':
@@ -3250,6 +3256,12 @@ packages:
       queue-microtask: 1.2.3
     dev: true
 
+  /rxjs@7.8.1:
+    resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
+    dependencies:
+      tslib: 2.6.2
+    dev: false
+
   /safe-array-concat@1.0.1:
     resolution: {integrity: sha512-6XbUAseYE2KtOuGueyeobCySj9L4+66Tn6KQMOPQJrAJEowYKW/YR/MGJZl7FdydUdaFu4LYyDZjxf4/Nmo23Q==}
     engines: {node: '>=0.4'}
@@ -3511,7 +3523,6 @@ packages:
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
-    dev: true
 
   /type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -3874,6 +3885,16 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
+
+  /zustand-rx@2.0.1(rxjs@7.8.1)(zustand@4.4.2):
+    resolution: {integrity: sha512-HfcbWwD2FYWRa6jKuL9fUky977Yrb3e4xsH+sEAmb9hE6kc6io2s/ScDvQJHqCenOgZX6QOZrheQcc/gH4Khzw==}
+    peerDependencies:
+      rxjs: '*'
+      zustand: '*'
+    dependencies:
+      rxjs: 7.8.1
+      zustand: 4.4.2(@types/react@18.2.24)(immer@10.0.3)(react@18.2.0)
+    dev: false
 
   /zustand@4.4.2(@types/react@18.2.24)(immer@10.0.3)(react@18.2.0):
     resolution: {integrity: sha512-qF3/vZHCrjPUX5DvPE3DPDZlh+FiAWRKlP9PI7SlW1MCk8q4vUCDqyWsbF8K41ne0Yx8eeeb0m1cypn1LqUMYQ==}
