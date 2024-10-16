@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-import { useTurn } from '../..'
+import { useTurn } from '../../model'
 
 export const useFocusElementOnTurnEnd = <T extends HTMLElement>() => {
   const ref = useRef<T>(null)

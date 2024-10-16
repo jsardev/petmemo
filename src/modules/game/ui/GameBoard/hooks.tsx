@@ -8,8 +8,8 @@ import {
   useSelectedCards,
   useAllCardsRegistered,
   useCardRefs,
-  useTurnActions,
 } from '@/modules/game'
+import { useGameService } from '@/modules/game/ui/Game/hooks'
 import { focusNextElement } from '@/shared/utils/dom'
 
 const useFocusFirstCardOnMount = () => {
@@ -45,7 +45,7 @@ export const useGameBoard = () => {
   const { isFinished } = useTurn()
   const isCardCollected = useIsCardCollected()
   const isCardRevealed = useIsCardRevealed()
-  const { selectCard } = useTurnActions()
+  const gameService = useGameService()
 
   useFocusFirstCardOnMount()
   useFocusNextCardOnCardSelect(isFinished)
@@ -55,6 +55,6 @@ export const useGameBoard = () => {
     isDisabled: isFinished,
     isCardCollected,
     isCardRevealed,
-    selectCard,
+    selectCard: gameService.selectCard,
   }
 }

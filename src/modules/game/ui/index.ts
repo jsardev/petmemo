@@ -1,4 +1,4 @@
-export * from './GameManager'
+export * from './Game'
 export * from './GameBoard/GameBoard'
 export * from './GameOverlay'
 export * from './GameStartButton'

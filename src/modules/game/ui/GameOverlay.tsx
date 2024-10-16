@@ -1,6 +1,6 @@
 import { GameOverlayMenu } from './GameOverlayMenu'
 import { GameOverlayScore } from './GameOverlayScore'
-import { useCurrentPlayer, usePlayers } from '..'
+import { useCurrentPlayer, usePlayers } from '../model'
 
 const playerIndexToClassesMap: Record<number, string> = {
   0: 'justify-self-start self-start',

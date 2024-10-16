@@ -1,4 +1,4 @@
-import { GameCard } from '..'
+import type { GameCard } from '../model'
 
 export const isCardCollected = (collectedCards: GameCard[], card: GameCard) =>
   collectedCards.some(({ id }) => id === card.id)

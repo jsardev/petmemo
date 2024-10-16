@@ -1,6 +1,14 @@
 import { ImageApiClient } from '@/shared/infrastructure'
 
-import { GameSettingsState } from './state'
+export type GameSettingsState = {
+  playerCount: number
+  cardMatrixSize: number
+  petType: PetType
+
+  setPlayerCount: (players: number) => void
+  setCardMatrixSize: (cards: number) => void
+  setPetType: (petType: PetType) => void
+}
 
 export type GameSettings = Pick<
   GameSettingsState,

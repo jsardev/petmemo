@@ -1,5 +1,3 @@
-import { GameSettings } from '@/modules/game-settings'
-
 export type Player = {
   id: number
 }
@@ -35,23 +33,8 @@ export type GameTurnState = {
   isFinished: boolean
 }
 
-export type GameTurnActions = {
-  actions: {
-    selectCard: (card: GameCard) => void
-    setTurnPhase: (phase: GameTurnPhase) => void
-    nextTurnPhase: () => void
-    startTurnTimer: () => void
-    stopTurnTimer: () => void
-    restartTurnTimer: () => void
-    resetTurnTimer: () => void
-    nextTurn: () => void
-    endTurn: () => void
-    resetTurn: () => void
-  }
-}
-
 export type GameTurnStateSlice = {
-  turn: GameTurnState & GameTurnActions
+  turn: GameTurnState
 }
 
 export type GameBaseState = {
@@ -64,16 +47,11 @@ export type GameBaseState = {
   }
 }
 
-export type GameBaseActions = {
-  actions: {
-    prepareGame: (settings: GameSettings) => Promise<void>
-    startGame: () => () => void
-    resetGame: () => void
-    endGame: () => void
-    registerCardRef: (element: HTMLElement) => () => void
-  }
-}
-
-export type GameBaseStateSlice = GameBaseState & GameBaseActions
+export type GameBaseStateSlice = GameBaseState
 
 export type GameState = GameBaseStateSlice & GameTurnStateSlice
+
+export enum GameMode {
+  SINGLE_PLAYER = 'SINGLE_PLAYER',
+  MULTI_PLAYER = 'MULTI_PLAYER',
+}

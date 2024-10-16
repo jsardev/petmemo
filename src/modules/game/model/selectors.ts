@@ -1,6 +1,6 @@
 import { Draft } from 'immer'
 
-import { GameCard, GameState } from '.'
+import { GameCard, GameState } from './types'
 
 export const selectCollectedCards = (state: GameState) =>
   state.players.reduce<GameCard[]>(

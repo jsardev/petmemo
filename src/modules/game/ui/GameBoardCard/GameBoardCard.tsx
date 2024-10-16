@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { BoardCard } from '@/shared/ui/BoardCard'
 
 import { useGameBoardCard } from './hooks'
-import { GameCard } from '../..'
+import type { GameCard } from '../../model'
 
 export type GameBoardCardProps = {
   card: GameCard

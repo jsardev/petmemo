@@ -1,7 +1,9 @@
-import { useTurn } from '..'
+import { useTurn } from '../model'
 
 export const GameTurnTimer = () => {
   const { timer } = useTurn()
 
-  return <div className="text-5xl font-bold text-primary">{timer}</div>
+  const content = timer === 0 ? `Time's up!` : timer
+
+  return <div className="text-5xl font-bold text-primary">{content}</div>
 }
