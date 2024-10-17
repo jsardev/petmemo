@@ -12,7 +12,7 @@ type GameBoardProps = {
 }
 
 export const GameBoard = ({ className }: GameBoardProps) => {
-  const { cards, isTurnFinished, isCardCollected, isCardRevealed, selectCard } =
+  const { cards, isDisabled, isCardCollected, isCardRevealed, selectCard } =
     useGameBoard()
 
   return (
@@ -24,7 +24,7 @@ export const GameBoard = ({ className }: GameBoardProps) => {
           frontImageUrl={FRONT_IMAGE_URL}
           isCollected={isCardCollected(card)}
           isRevealed={isCardRevealed(card)}
-          isDisabled={isTurnFinished}
+          isDisabled={isDisabled}
           onClick={selectCard}
         />
       ))}

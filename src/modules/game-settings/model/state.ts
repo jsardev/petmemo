@@ -1,16 +1,6 @@
 import { create } from 'zustand'
 
-import { PetType } from './types'
-
-export type GameSettingsState = {
-  playerCount: number
-  cardMatrixSize: number
-  petType: PetType
-
-  setPlayerCount: (players: number) => void
-  setCardMatrixSize: (cards: number) => void
-  setPetType: (petType: PetType) => void
-}
+import { GameSettingsState, PetType } from './types'
 
 export const useGameSettingsState = create<GameSettingsState>((set) => ({
   playerCount: 1,

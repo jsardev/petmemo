@@ -1,19 +1,20 @@
 import { useCallback, useEffect, useRef } from 'react'
 
-import { GameBoardCardProps } from './GameBoardCard'
-import { useGameActions } from '../..'
+import { useGameService } from '@/modules/game/ui/Game/hooks'
+
+import type { GameBoardCardProps } from './GameBoardCard'
 
 type UseGameBoardCardProps = Pick<GameBoardCardProps, 'card' | 'onClick'>
 
 const useRegisterGameCardOnMount = () => {
   const ref = useRef(null)
-  const { registerCardRef } = useGameActions()
+  const gameService = useGameService()
 
   useEffect(() => {
     if (ref.current) {
-      return registerCardRef(ref.current)
+      return gameService.registerCardRef(ref.current)
     }
-  }, [registerCardRef])
+  }, [gameService])
 
   return ref
 }

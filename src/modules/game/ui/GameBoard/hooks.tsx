@@ -5,11 +5,11 @@ import {
   useIsCardCollected,
   useTurn,
   useCards,
-  useGameActions,
   useSelectedCards,
   useAllCardsRegistered,
   useCardRefs,
 } from '@/modules/game'
+import { useGameService } from '@/modules/game/ui/Game/hooks'
 import { focusNextElement } from '@/shared/utils/dom'
 
 const useFocusFirstCardOnMount = () => {
@@ -23,13 +23,13 @@ const useFocusFirstCardOnMount = () => {
   }, [allCardsRegistered, cardRefs])
 }
 
-const useFocusNextCardOnCardSelect = () => {
+const useFocusNextCardOnCardSelect = (isDisabled: boolean) => {
   const cardRefs = useCardRefs()
   const selectedCards = useSelectedCards()
   const allCardsRegistered = useAllCardsRegistered()
 
   useEffect(() => {
-    if (allCardsRegistered) {
+    if (allCardsRegistered && !isDisabled) {
       if (selectedCards.length === 0) {
         return focusNextElement(cardRefs, 1, 0)
       }
@@ -37,24 +37,24 @@ const useFocusNextCardOnCardSelect = () => {
         return focusNextElement(cardRefs, 1, selectedCards[0].index)
       }
     }
-  }, [allCardsRegistered, selectedCards, cardRefs])
+  }, [allCardsRegistered, selectedCards, cardRefs, isDisabled])
 }
 
 export const useGameBoard = () => {
   const cards = useCards()
-  const { isFinished: isTurnFinished } = useTurn()
+  const { isFinished } = useTurn()
   const isCardCollected = useIsCardCollected()
   const isCardRevealed = useIsCardRevealed()
-  const { selectCard } = useGameActions()
+  const gameService = useGameService()
 
   useFocusFirstCardOnMount()
-  useFocusNextCardOnCardSelect()
+  useFocusNextCardOnCardSelect(isFinished)
 
   return {
     cards,
-    isTurnFinished,
+    isDisabled: isFinished,
     isCardCollected,
     isCardRevealed,
-    selectCard,
+    selectCard: gameService.selectCard,
   }
 }

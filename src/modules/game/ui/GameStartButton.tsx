@@ -1,7 +1,5 @@
-import { useGameSettings } from '@/modules/game-settings'
+import { useGameService } from '@/modules/game/ui/Game/hooks'
 import { Button } from '@/shared/ui/Button'
-
-import { useGameActions } from '..'
 
 type GameStartButtonProps = {
   className?: string
@@ -12,11 +10,10 @@ export const GameStartButton = ({
   className,
   children,
 }: GameStartButtonProps) => {
-  const gameSettings = useGameSettings()
-  const { startGame } = useGameActions()
+  const gameService = useGameService()
 
   const handleClick = () => {
-    startGame(gameSettings)
+    gameService.prepareGame()
   }
 
   return (

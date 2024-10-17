@@ -1,6 +1,6 @@
 import { Scoreboard } from '@/shared/ui/Scoreboard'
 
-import { usePlayers } from '..'
+import { usePlayers } from '../model'
 
 type GameScoreboardProps = {
   className?: string
