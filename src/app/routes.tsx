@@ -1,13 +1,26 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import { GameEndPage } from '@/pages/GameEndPage'
-import { GamePage } from '@/pages/GamePage'
-import { GameSettingsPage } from '@/pages/GameSettingsPage'
+import { GameEndPage, GameLayout, GamePage } from '@/modules/game'
+import { GameSettingsPage } from '@/modules/game-settings'
 
 const router = createBrowserRouter([
-  { path: '/', element: <GameSettingsPage /> },
-  { path: '/play', element: <GamePage /> },
-  { path: '/scoreboard', element: <GameEndPage /> },
+  {
+    path: '/',
+    element: <GameSettingsPage />,
+  },
+  {
+    element: <GameLayout />,
+    children: [
+      {
+        path: '/play',
+        element: <GamePage />,
+      },
+      {
+        path: '/scoreboard',
+        element: <GameEndPage />,
+      },
+    ],
+  },
 ])
 
 export const Routing = () => {
