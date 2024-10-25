@@ -111,7 +111,7 @@ module.exports = {
         rules: [
           {
             from: ['app'],
-            allow: ['app', 'pages'],
+            allow: ['app', 'modules'],
           },
           {
             from: ['modules'],

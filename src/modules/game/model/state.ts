@@ -12,6 +12,7 @@ export type GameState = {
   cards: GameCard[]
   areCardsLoading: boolean
   turn: GameTurn
+  isReady: boolean
   isFinished: boolean
 
   refs: {
@@ -36,6 +37,7 @@ export const useGameState = create(
       selectedCards: [],
       isFinished: false,
     },
+    isReady: false,
     isFinished: false,
 
     refs: {
@@ -45,6 +47,7 @@ export const useGameState = create(
     startGame: async (settings: GameSettings) => {
       set(
         produce((state: GameState) => {
+          state.isReady = true
           state.isFinished = false
           state.areCardsLoading = true
           state.turn.playerIndex = 0
