@@ -6,10 +6,11 @@ A showcase application built with Vite and React. Powered by [The Cats API](http
 
 ## Prerequisities
 
-Important! The Cats API does only support filtering with query parameters when used with an API key. If you want to run the app locally, you need to grab a key from the [Cats API](https://thecatapi.com) website and put it in a `.env` file, like this:
+Important! The Cats/Dogs API does only support filtering with query parameters when used with an API key. If you want to run the app locally, you need to grab a key from the [Cats API](https://thecatapi.com) and [Dogs API](https://thedogapi.com/) website and put it in a `.env` file, like this:
 
 ```
-VITE_API_KEY=YOUR_KEY_HERE
+VITE_CAT_API_KEY=
+VITE_DOG_API_KEY=
 ```
 
 ### What exactly does not work?
