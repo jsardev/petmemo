@@ -4,7 +4,7 @@ import { subscribeWithSelector } from 'zustand/middleware'
 
 import { GameSettings } from '@/modules/game-settings'
 
-import { GamePlayer, GameCard, GameTurn } from './types'
+import { GamePlayer, GameCard, GameTurn, GameTurnPhase } from './types'
 import { GameService } from '../services/GameService'
 
 export type GameState = {
@@ -36,6 +36,8 @@ export const useGameState = create(
       playerIndex: 0,
       selectedCards: [],
       isFinished: false,
+      timer: 0,
+      phase: GameTurnPhase.ACTION,
     },
     isReady: false,
     isFinished: false,
@@ -53,6 +55,8 @@ export const useGameState = create(
           state.turn.playerIndex = 0
           state.turn.selectedCards = []
           state.turn.isFinished = false
+          state.turn.timer = 0
+          state.turn.phase = GameTurnPhase.ACTION
         }),
       )
 

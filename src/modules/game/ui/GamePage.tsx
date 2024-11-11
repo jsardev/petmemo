@@ -24,6 +24,7 @@ export function GamePage() {
 
           <div className="grid grid-cols-1 grid-rows-1 max-h-full w-full place-items-center gap-8 lg:justify-start">
             <GameBoard className="z-10" />
+            <GameTurnTimer className="z-10" />
             <GameNextTurnButton className="z-10" />
           </div>
         </>

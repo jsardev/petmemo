@@ -15,6 +15,13 @@ export type GameTurn = {
   playerIndex: number
   selectedCards: GameCard[]
   isFinished: boolean
+  timer: number
+  phase: GameTurnPhase
+}
+
+export enum GameTurnPhase {
+  ACTION = 'ACTION',
+  COOLDOWN = 'COOLDOWN',
 }
 
 export type GameCard = Card & {
